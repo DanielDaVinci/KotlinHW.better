@@ -9,24 +9,13 @@ import java.text.FieldPosition
 class ImageProvider(private val getRequest : ItemRequest)
 {
 
-    suspend fun getItems(offset : Int, amount : Int): Response
+    suspend fun getItems(offset : Int, limit : Int): Response
     {
         return getRequest.getItems(
             ResponseParameters.API_KEY.value,
             ResponseParameters.Q.value,
-            amount,
+            limit,
             offset,
-            ResponseParameters.RATING.value,
-            ResponseParameters.LANG.value)
-    }
-
-    suspend fun getItem(position : Int): Response
-    {
-        return getRequest.getItems(
-            ResponseParameters.API_KEY.value,
-            ResponseParameters.Q.value,
-            1,
-            position,
             ResponseParameters.RATING.value,
             ResponseParameters.LANG.value)
     }

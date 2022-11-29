@@ -8,6 +8,11 @@ class MainApplication : Application()
     override fun onCreate()
     {
         super.onCreate()
-        ConnectorContextProvider.initialize(this)
+        Connector.initialize(this)
+    }
+
+    companion object
+    {
+        val ApplicationContext = this
     }
 }

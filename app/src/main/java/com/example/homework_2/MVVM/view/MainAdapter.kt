@@ -23,22 +23,12 @@ class MainAdapter(
         holder.bind(items[position])
     }
 
-    override fun getItemCount(): Int =
-        items.size
+    override fun getItemCount(): Int = items.size
 
-    fun addList(items: List<Response.Item>)
+    fun addItems(items: List<Response.Item>)
     {
         this.items.addAll(items)
-    }
-
-    fun addItem(item: Response.Item)
-    {
-        items.add(item)
-    }
-
-    fun refreshItem(position: Int)
-    {
-
+        notifyDataSetChanged()
     }
 }
 
