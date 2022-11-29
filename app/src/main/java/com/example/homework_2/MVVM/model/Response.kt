@@ -1,8 +1,8 @@
 package com.example.homework_2.MVVM.model
 
 import android.os.Parcelable
-import com.google.gson.annotations.SerializedName
 import kotlinx.parcelize.Parcelize
+import com.google.gson.annotations.SerializedName
 
 data class Response(
     @SerializedName("data") var data: ArrayList<Item> = arrayListOf()

@@ -1,15 +1,11 @@
 package com.example.homework_2.MVVM.view
 
 import android.os.Bundle
-import android.service.controls.actions.FloatAction
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ProgressBar
-import android.widget.TextView
 import android.widget.Toast
-import androidx.core.view.isVisible
 import androidx.lifecycle.SavedStateViewModelFactory
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -20,20 +16,12 @@ import com.example.homework_2.R
 import com.example.homework_2.StatusLoad
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 
-class MainFragment : Fragment()
+class MainFragment : Fragment(R.layout.fragment_main)
 {
     private lateinit var mainViewModel: MainViewModel
 
     private val mainAdapter = MainAdapter()
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View
-    {
-        val view = inflater.inflate(R.layout.fragment_main, container, false)
-        return view
-    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?)
     {

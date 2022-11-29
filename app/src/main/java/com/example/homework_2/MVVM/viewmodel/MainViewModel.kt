@@ -50,23 +50,4 @@ class MainViewModel(private val state: SavedStateHandle) : ViewModel()
         }
         return null
     }
-
-//    fun getItems(offset: Int = 0, limit : Int = 100)
-//    {
-//        viewModelScope.launch {
-//            status.value = StatusLoad.SUCCESS
-//            try
-//            {
-//                val request = withContext(Dispatchers.IO)
-//                {
-//                    provider.getItems(offset, limit)
-//                }
-//                receivedItems.value = request.data
-//            }
-//            catch (error: Throwable)
-//            {
-//                status.value = StatusLoad.ERROR
-//            }
-//        }
-//    }
 }

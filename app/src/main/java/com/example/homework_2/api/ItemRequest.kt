@@ -8,7 +8,6 @@ import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
 import retrofit2.http.Query
 
-// интерфейс запроса к сервису
 interface ItemRequest
 {
     @GET("/v1/gifs/search")
@@ -20,23 +19,26 @@ interface ItemRequest
         @Query("rating") rating: String,
         @Query("lang") lang: String,
     ) : Response
-}
 
-fun createRequest(baseUrl: String): ItemRequest
-{
-    val loggingInterceptor = HttpLoggingInterceptor().apply {
-        level = HttpLoggingInterceptor.Level.BODY
+    companion object
+    {
+        fun createRequest(baseUrl: String): ItemRequest
+        {
+            val loggingInterceptor = HttpLoggingInterceptor().apply {
+                level = HttpLoggingInterceptor.Level.BODY
+            }
+
+            val client = OkHttpClient.Builder().apply {
+                addNetworkInterceptor(loggingInterceptor)
+            }.build()
+
+            val retrofit = Retrofit.Builder().apply {
+                client(client)
+                addConverterFactory(GsonConverterFactory.create())
+                baseUrl(baseUrl)
+            }.build()
+
+            return retrofit.create(ItemRequest::class.java)
+        }
     }
-
-    val client = OkHttpClient.Builder().apply {
-        addNetworkInterceptor(loggingInterceptor)
-    }.build()
-
-    val retrofit = Retrofit.Builder().apply {
-        client(client)
-        addConverterFactory(GsonConverterFactory.create())
-        baseUrl(baseUrl)
-    }.build()
-
-    return retrofit.create(ItemRequest::class.java)
 }

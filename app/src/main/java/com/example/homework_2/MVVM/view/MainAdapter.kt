@@ -4,9 +4,10 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
-import com.example.homework_2.R
+import androidx.recyclerview.widget.RecyclerView
 import com.example.homework_2.MVVM.model.Response
-import java.text.FieldPosition
+import com.example.homework_2.R
+
 
 class MainAdapter(
     private val items: ArrayList<Response.Item> = arrayListOf()
